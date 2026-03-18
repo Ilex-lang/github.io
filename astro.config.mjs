@@ -10,7 +10,6 @@ const ilexGrammar = require("./ilex.tmLanguage.json");
 // https://astro.build/config
 export default defineConfig({
   site: "https://ilex-lang.github.io",
-  base: "/pages",
   markdown: {
     shikiConfig: {
       langs: [
