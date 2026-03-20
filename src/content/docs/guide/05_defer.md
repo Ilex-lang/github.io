@@ -15,7 +15,7 @@ fn some_func() string {
     return contents;
 }
 ```
-The file is closed just before the function returns.
+The file is closed just before the function returns. As you can see `defer` is great for cleanup code.
 
 ## Defer Blocks
 
