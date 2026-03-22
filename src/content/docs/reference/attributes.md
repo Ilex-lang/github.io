@@ -1,6 +1,6 @@
 ---
 title: Attributes
-description: Complete reference of attributes in Ilex.
+description: Complete reference of attributes in Neo.
 sidebar:
   order: 4
 ---

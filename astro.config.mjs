@@ -5,17 +5,17 @@ import gruvbox from "starlight-theme-gruvbox";
 import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
-const ilexGrammar = require("./ilex.tmLanguage.json");
+const neoGrammar = require("./neo.tmLanguage.json");
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://ilex-lang.github.io",
+  site: "https://codeberg.org/neolang/pages",
   markdown: {
     shikiConfig: {
       langs: [
         {
-          ...ilexGrammar,
-          aliases: ["ilex", "ix"],
+          ...neoGrammar,
+          aliases: ["neo"],
         },
       ],
     },
@@ -23,12 +23,12 @@ export default defineConfig({
   integrations: [
     starlight({
       plugins: [gruvbox()],
-      title: "Ilex",
+      title: "Neo",
       social: [
         {
           icon: "codeberg",
           label: "Codeberg",
-          href: "https://github.com/Ilex-lang/ilex",
+          href: "https://codeberg.org/neolang/neo",
         },
       ],
       sidebar: [

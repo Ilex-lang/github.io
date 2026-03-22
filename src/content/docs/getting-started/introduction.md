@@ -1,9 +1,9 @@
 ---
 title: Introduction
-description: An introduction to the Ilex programming language.
+description: An introduction to the Neo programming language.
 ---
 
-Ilex is a systems programming language designed around the principle of **explicit over implicit**. It gives you full control over memory, clear syntax, and powerful compile-time features — without hiding complexity behind abstractions.
+Neo is a systems programming language designed around the principle of **explicit over implicit**. It gives you full control over memory, clear syntax, and powerful compile-time features — without hiding complexity behind abstractions.
 
 ## Design Principles
 
@@ -13,9 +13,9 @@ Ilex is a systems programming language designed around the principle of **explic
 - **Compile-time power** — first-class `Code` type, macros, and compile-time execution
 - **Clear syntax** — semicolons, braces, and keywords that say what they mean
 
-## What Ilex Looks Like
+## What Neo Looks Like
 
-```ilex
+```neo
 namespace main;
 
 #import using fmt;
@@ -27,4 +27,4 @@ fn main() {
 
 ## Next Steps
 
-Head to [Installation](/getting-started/installation/) to set up Ilex, or jump straight to [Hello World](/getting-started/hello-world/) to see it in action.
+Head to [Installation](/getting-started/installation/) to set up Neo, or jump straight to [Hello World](/getting-started/hello-world/) to see it in action.

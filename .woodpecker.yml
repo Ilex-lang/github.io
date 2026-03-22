@@ -1,0 +1,24 @@
+when:
+  branch: main
+  event: push
+
+steps:
+  build:
+    image: oven/bun:latest
+    commands:
+      - bun install
+      - bun run build
+
+  deploy:
+    image: bitnami/git:latest
+    commands:
+      - git clone -b pages https://codeberg.org/${CI_REPO} pages_branch || (git init pages_branch && cd pages_branch && git checkout --orphan pages)
+      - rm -rf pages_branch/*
+      - cp -r dist/* pages_branch/
+      - cd pages_branch
+      - git add -A
+      - git config user.email "woodpecker@noreply.codeberg.org"
+      - git config user.name "Woodpecker CI"
+      - git commit -m "Deploy from ${CI_COMMIT_SHA:0:7}" --allow-empty
+      - git push -u https://${CODEBERG_TOKEN}@codeberg.org/${CI_REPO} HEAD:pages
+    secrets: [codeberg_token]

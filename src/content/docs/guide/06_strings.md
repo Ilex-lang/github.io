@@ -1,6 +1,6 @@
 ---
 title: Strings
-description: Strings, formatting, String_Builder, and common string operations in Ilex.
+description: Strings, formatting, String_Builder, and common string operations in Neo.
 sidebar:
   order: 6
 ---
@@ -9,7 +9,7 @@ Strings are a built-in type. They are UTF-8 encoded and immutable. Internally a 
 
 String literals point to read-only static data. Indexing into a string returns the byte at that position:
 
-```ilex
+```neo
 str := "Yeet";
 mut c: u8 = str[0];
 assert(c == 'Y');
@@ -18,7 +18,7 @@ str[0] = 'M'; // Compile error, strings are immutable
 ```
 
 Bounds checking is enforced at compile time for literals and at runtime for all strings:
-```ilex
+```neo
 str := "Yeet";
 if str[6] == 't' {} // Compile error, out of bounds
 ```
@@ -28,7 +28,7 @@ if str[6] == 't' {} // Compile error, out of bounds
 
 Strings are compared by value (byte by byte), not by pointer. Two strings with the same content are equal regardless of where they are stored:
 
-```ilex
+```neo
 a := "hello";
 b := "hello";
 assert(a == b); // True
@@ -40,7 +40,7 @@ If their lengths differ they are not equal, and the bytes are not compared.
 
 The `+` operator is **not** valid for strings, it would require hidden memory allocation. Use `strings::concat()` instead:
 
-```ilex
+```neo
 str := "Hello" + " world!";                 // Compile error
 str := strings::concat("Hello", " world!"); // Valid
 defer delete(str);
@@ -48,7 +48,7 @@ defer delete(str);
 TODO: Should there be an operator for compile time string concatenation (maybe `##`)? Like `++` in Zig.
 
 `strings::concat` accepts variadic arguments:
-```ilex
+```neo
 full := strings::concat("Hello", ", ", name, "!");
 defer delete(full);
 ```
@@ -59,7 +59,7 @@ Functions that return new strings allocate via the context allocator. The caller
 
 `delete()` frees the underlying data of a heap-allocated string. Calling `delete()` on a string literal is undefined behavior (debug mode will panic):
 
-```ilex
+```neo
 greeting := strings::concat("a", "b");
 delete(greeting); // Valid, frees heap data
 
@@ -70,7 +70,7 @@ delete(literal); // Undefined behavior, literal points to static data
 ## Temp Allocator
 
 Use the temp allocator to avoid manual cleanup for short-lived strings. Functions that allocate have an `_alloc` variant that takes an allocator as the first argument:
-```ilex
+```neo
 tmp := strings::concat_alloc(context->allocator_tmp, "debug: ", msg);
 // No delete needed, temp allocator frees at frame boundary
 ```
@@ -78,7 +78,7 @@ tmp := strings::concat_alloc(context->allocator_tmp, "debug: ", msg);
 ## Format Strings
 
 `fmt::println` supports two forms:
-```ilex
+```neo
 fmt::println(value);                  // Prints any value using its default format
 fmt::println("x = {}, y = {}", x, y); // Format string with placeholders
 ```
@@ -111,7 +111,7 @@ TODO: This should probably be in a different file.
 Escape braces with `\{` and `\}`.
 
 `fmt::format(...)` returns an allocated string instead of printing:
-```ilex
+```neo
 s := fmt::format("x={}, y={}", x, y);
 defer delete(s);
 
@@ -122,7 +122,7 @@ s := fmt::format_alloc(context->allocator_tmp, "x={}, y={}", x, y);
 ## String Operations
 
 Functions that return new strings (all allocate via context allocator, caller must free):
-```ilex
+```neo
 upper := strings::to_upper("hello"); // "HELLO"
 defer delete(upper);
 
@@ -137,13 +137,13 @@ defer delete(sub);
 ```
 
 Each of these has an `_alloc` variant that takes an allocator as the first argument:
-```ilex
+```neo
 upper := strings::to_upper_alloc(context->allocator_tmp, "hello");
 // No delete needed, temp allocator handles it
 ```
 
 Functions that return information (no allocation):
-```ilex
+```neo
 strings::len(s);               // Same as s.len
 strings::contains(s, "sub");   // bool
 strings::starts_with(s, "he"); // bool
@@ -153,7 +153,7 @@ strings::count(s, "l");        // int
 ```
 
 For working with Unicode codepoints:
-```ilex
+```neo
 strings::decode_char(s, byte_offset); // returns .{char, int} (char + bytes consumed)
 strings::codepoint_count(s);          // number of codepoints (not bytes)
 ```
@@ -162,7 +162,7 @@ strings::codepoint_count(s);          // number of codepoints (not bytes)
 
 For efficient in-place string construction and mutation, use `String_Builder`. It is a mutable, growable byte buffer:
 
-```ilex
+```neo
 mut sb := strings::new_builder();
 defer delete(sb);
 
@@ -175,13 +175,13 @@ fmt::println(sb); // "Hello, Alice!"
 ```
 
 You can pre-allocate capacity:
-```ilex
+```neo
 mut sb := strings::new_builder(256);
 defer delete(sb);
 ```
 
 Use `new_builder_alloc` or `from_alloc` to specify an allocator:
-```ilex
+```neo
 mut sb := strings::new_builder_alloc(context->allocator_tmp);
 mut sb2 := strings::from_alloc(context->allocator_tmp, "hello");
 ```
@@ -189,20 +189,20 @@ mut sb2 := strings::from_alloc(context->allocator_tmp, "hello");
 ### In-Place Mutation
 
 `String_Builder` supports direct byte access and in-place operations:
-```ilex
+```neo
 mut sb := strings::from("hello world");
 defer delete(sb);
 
 sb[0] = 'H';                            // Direct byte mutation
 strings::to_upper(&sb, 0, 1);           // Capitalize range in place
-strings::replace(&sb, "world", "Ilex"); // In-place replacement
+strings::replace(&sb, "world", "Neo"); // In-place replacement
 strings::insert(&sb, 5, " beautiful");  // Insert at position
 strings::remove_range(&sb, 0, 6);       // Remove byte range
 ```
 
 ### Extracting a String
 
-```ilex
+```neo
 // Copy, builder remains usable:
 result := strings::build(sb);
 defer delete(result);
@@ -218,7 +218,7 @@ result := strings::build_alloc(context->allocator_tmp, sb);
 ### Common Patterns
 
 Build a string in a loop:
-```ilex
+```neo
 mut sb := strings::new_builder();
 defer delete(sb);
 for const item, i in items {
@@ -230,7 +230,7 @@ defer delete(result);
 ```
 
 Temp allocator for formatting:
-```ilex
+```neo
 fn log_message(level: string, msg: string) {
     formatted := strings::concat_alloc(context->allocator_tmp, "[", level, "] ", msg);
     logger::write(formatted);
@@ -240,7 +240,7 @@ fn log_message(level: string, msg: string) {
 
 ## Internal Representation
 
-```ilex
+```neo
 // Internal representation:
 typedef string struct {
     data: [^]u8;  // Pointer to UTF-8 byte data
@@ -251,14 +251,14 @@ typedef string struct {
 ## C Interop
 
 The read only `.data` field can be used for easy c interoperability.
-```ilex
+```neo
 str := "foobar";
 len := clib::strlen(str.data);
 assert(len == 6);
 ```
 
 Alternatively convert between `string` and `cstring` explicitly:
-```ilex
+```neo
 cs := strings::to_cstring(my_string);
 defer delete(cs);
 

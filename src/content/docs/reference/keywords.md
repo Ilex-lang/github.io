@@ -1,6 +1,6 @@
 ---
 title: Keywords
-description: Complete list of reserved keywords in Ilex.
+description: Complete list of reserved keywords in Neo.
 sidebar:
   order: 2
 ---
@@ -139,6 +139,6 @@ sidebar:
 | `#target_endian` | Target endianness |
 | `#target_pointer_width` | Pointer width in bits |
 | `#build_mode` | `"debug"` or `"release"` |
-| `#ilex_version` | Compiler version string |
+| `#neo_version` | Compiler version string |
 | `#build_timestamp` | Build timestamp |
 | `#env("NAME")` | Environment variable value |

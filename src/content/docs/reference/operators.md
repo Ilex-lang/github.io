@@ -1,6 +1,6 @@
 ---
 title: Operators
-description: Complete reference of all operators in Ilex.
+description: Complete reference of all operators in Neo.
 sidebar:
   order: 3
 ---

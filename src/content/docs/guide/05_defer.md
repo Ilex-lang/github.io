@@ -6,7 +6,7 @@ sidebar:
 ---
 
 The `defer` keyword defers the execution of code until the end of the current scope:
-```ilex
+```neo
 fn some_func() string {
     some_file := fs::open("my_file.txt");
     defer fs::close(&some_file);
@@ -20,7 +20,7 @@ The file is closed just before the function returns. As you can see `defer` is g
 ## Defer Blocks
 
 Blocks of code can be deferred as well:
-```ilex
+```neo
 fn another_func() {
     defer {
         call1();
@@ -35,7 +35,7 @@ fn another_func() {
 ## Multiple Defer
 
 Defer statements can be stacked as well and are executed in a First In Last Out (FILO) fashion:
-```ilex
+```neo
 fn defer_tst() {
     defer fmt::println("1");
     defer fmt::println("2");
@@ -51,7 +51,7 @@ fn defer_tst() {
 `defer` is scoped to its enclosing block. Inside a loop body, each iteration is
 a separate block scope, so defers execute at the end of each iteration (not at
 function exit). This means `N` iterations produce `N` defer executions:
-```ilex
+```neo
 #import fmt;
 
 fn main() {
@@ -76,7 +76,7 @@ Bye
 ## Defer on Error
 
 `defer_err` can be used to defer code only if the function returns an error:
-```ilex
+```neo
 fn setup(): Connection! {
     db := try connect();
     defer_err close(&db);  // Runs if anything below fails
@@ -88,4 +88,4 @@ fn setup(): Connection! {
 }
 ```
 
-See the [Error handling]() section for an explanation on how error handling in Ilex works.
+See the [Error handling]() section for an explanation on how error handling in Neo works.

@@ -1,6 +1,6 @@
 ---
 title: Types
-description: Complete reference of all built-in types in Ilex.
+description: Complete reference of all built-in types in Neo.
 sidebar:
   order: 1
 ---

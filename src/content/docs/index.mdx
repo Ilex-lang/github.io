@@ -1,5 +1,5 @@
 ---
-title: The Ilex Programming Language
+title: The Neo Programming Language
 description: A systems programming language that's explicit, fast, and fun.
 template: splash
 hero:
@@ -8,19 +8,19 @@ hero:
     - text: Get Started
       link: /getting-started/introduction/
       icon: right-arrow
-    - text: View on GitHub
-      link: https://github.com/Ilex-lang/ilex
+    - text: View on Codeberg
+      link: https://codeberg.org/neolang/neo
       variant: minimal
       icon: external
 ---
 
 import { Aside, Card, CardGrid, Tabs, TabItem } from '@astrojs/starlight/components';
 
-<Aside>Ilex is in early and active development and is therefore not considered stable. At this point breaking changes and bugs between Ilex versions should be expected.</Aside>
+<Aside>Neo is in early and active development and is therefore not considered stable. At this point breaking changes and bugs between Neo versions should be expected.</Aside>
 
 <Tabs>
   <TabItem label="Hello world">
-    ```ilex
+    ```neo
     #import fmt;
 
     fn main() {
@@ -29,7 +29,7 @@ import { Aside, Card, CardGrid, Tabs, TabItem } from '@astrojs/starlight/compone
     ```
   </TabItem>
   <TabItem label="Generics">
-    ```ilex
+    ```neo
     #import fmt;
     #import { append } from arrays;
 
@@ -62,7 +62,7 @@ import { Aside, Card, CardGrid, Tabs, TabItem } from '@astrojs/starlight/compone
     ```
   </TabItem>
   <TabItem label="Error Handling">
-    ```ilex
+    ```neo
     #import using fmt;
     #import fs;
 
@@ -83,7 +83,7 @@ import { Aside, Card, CardGrid, Tabs, TabItem } from '@astrojs/starlight/compone
     ```
   </TabItem>
   <TabItem label="Compile-Time">
-    ```ilex
+    ```neo
     #import fmt;
     #import { run, trim } from process;
     #import strings;
@@ -108,11 +108,11 @@ import { Aside, Card, CardGrid, Tabs, TabItem } from '@astrojs/starlight/compone
     ```
   </TabItem>
   <TabItem label="C Interop">
-    ```ilex
+    ```neo
     #import extern "raylib.h" as raylib;
 
     fn main() {
-        raylib::InitWindow(800, 600, "Hello from Ilex");
+        raylib::InitWindow(800, 600, "Hello from Neo");
         defer raylib::CloseWindow();
 
         until raylib::WindowShouldClose() {

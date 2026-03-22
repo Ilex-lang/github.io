@@ -5,12 +5,12 @@ sidebar:
   order: 4
 ---
 
-Like many other programming languages Ilex has functions.
+Like many other programming languages Neo has functions.
 
 ## Declaration
 
 Functions are declared with the `fn` keyword:
-```ilex
+```neo
 fn foo() {
     fmt::println("foo!");
 }
@@ -19,7 +19,7 @@ fn foo() {
 ## Arguments
 
 Functions can have arguments:
-```ilex
+```neo
 fn say_hi(name: string) {
     fmt::println("Hi {}!", name);
 }
@@ -27,7 +27,7 @@ fn say_hi(name: string) {
 
 If two or more consecutive arguments have the same type, the type can be omitted for all but the
 last argument of that type:
-```ilex
+```neo
 fn say_hi_2(name1, name2: string) {
     fmt::println("Hi {} and {}!", name1, name2);
 }
@@ -36,7 +36,7 @@ fn say_hi_2(name1, name2: string) {
 ### Named Arguments
 
 Function argument names can be used:
-```ilex
+```neo
 fn some_func(start, stop: int) { /- ... -/ }
 
 // Valid
@@ -52,14 +52,14 @@ some_func(the_start: 0, the_stop: 100);
 ## Returns
 
 Functions can have a return type:
-```ilex
+```neo
 fn add(a: int, b: int): int {
     return a + b;
 }
 ```
 
-Functions in ilex can only return one value. To return multiple values you can use a tuple:
-```ilex
+Functions in Neo can only return one value. To return multiple values you can use a tuple:
+```neo
 fn multiple_return(): .{int, string} {
     mut n: int;
     mut str: string;
@@ -71,7 +71,7 @@ fn multiple_return(): .{int, string} {
 If a function returns something the type must be specified in the function definition.
 A function can be explicitly marked as not having a return value. This is purely for the
 programmers convenience, there is no difference to the compiler.
-```ilex
+```neo
 fn yeet(): void {
     fmt::println("This is void!");
 }
@@ -80,7 +80,7 @@ fn yeet(): void {
 ## Default Arguments
 
 Functions can have default arguments:
-```ilex
+```neo
 fn add(a := 10, b := 10): int {
     return a + b;
 }
@@ -88,14 +88,14 @@ fn add(a := 10, b := 10): int {
 
 Default argument values must be compile-time constants. They cannot reference other parameters or
 call runtime functions:
-```ilex
+```neo
 fn foo(a := 10, b := a + 5) {} // Invalid, b references parameter a
 fn bar(a := 10, b := f()) {}   // Invalid, b calls a runtime function
 fn bar(a := 10, b := 15) {}    // Valid, both are compile-time constants
 ```
 
 Here type inference was used for the argument types but they can be specified as well:
-```ilex
+```neo
 fn add(a: int = 10, b: int = 10): int {
     return a + b;
 }
@@ -104,7 +104,7 @@ fn add(a: int = 10, b: int = 10): int {
 ## Immutability
 
 Function arguments are immutable by default:
-```ilex
+```neo
 fn some_func(x: int) {
     x = 42;  // Invalid
     y := &x; // Invalid (?)
@@ -112,7 +112,7 @@ fn some_func(x: int) {
 ```
 
 If you need to change the argument for some reason you must either make a copy or use the `mut` keyword:
-```ilex
+```neo
 fn some_func(x: int) {
     new_x := x;
     new_x = 42; // Valid
@@ -120,7 +120,7 @@ fn some_func(x: int) {
 ```
 
 Explicitly mark x as mutable with the `mut` keyword:
-```ilex
+```neo
 fn some_func(mut x: int) {
     x = 42; // Valid
     y := &x; // Valid
@@ -128,7 +128,7 @@ fn some_func(mut x: int) {
 ```
 
 Pointers can also be used to change the value:
-```ilex
+```neo
 fn some_func(x: ^int) {
     new_x := x;
     new_x^ = 42; // Should a copy be needed here?
@@ -143,7 +143,7 @@ some_func(x); // x is now 42
 
 Functions can be variadic, meaning they can take a variable number of arguments.
 The variadic argument can be treated like a static array:
-```ilex
+```neo
 fn sum(nums: ..int): int {
     res := 0;
     for (const n in nums) {
@@ -160,7 +160,7 @@ sum(4, 5, 6, 7, 8);
 ```
 
 Additional arguments can't come after a variadic argument:
-```ilex
+```neo
 fn counts(counts_var: ..int, type: string) {} // Invalid
 ```
 
@@ -168,7 +168,7 @@ fn counts(counts_var: ..int, type: string) {} // Invalid
 
 If a variadic function requires a minimum number of arguments to work, that can be specified with
 `#[min_arity]`:
-```ilex
+```neo
 #[min_arity=2]
 fn sum(nums: ..int): int {
     res := 0;
@@ -189,12 +189,12 @@ Did you know that a function with 9 arguments is called Novenary? Well now you d
 
 ## Function Overloading
 
-Ilex has function overloading, but it works a little differently than in other languages.
+Neo has function overloading, but it works a little differently than in other languages.
 
 Instead of declaring multiple functions with the same name and implicitly overloading them,
-functions in Ilex are explicitly overloaded by creating multiple functions with different names
+functions in Neo are explicitly overloaded by creating multiple functions with different names
 and using the `overloads` keyword:
-```ilex
+```neo
 fn powi(x: int, y: int): int {}
 fn powf(x: float, y: float): float {}
 fn powd(x: double, y: double): double {}
@@ -205,7 +205,7 @@ fn pow overloads { powi, powf, powd }
 This is done to be more explicit and searchable as well as making the compiler simpler to develop.
 
 The original functions can still be called or the overloaded function can be called:
-```ilex
+```neo
 a := 2.f;
 b := 8.f;
 x := 2;
@@ -218,7 +218,7 @@ u := powf(a, b);
 ```
 
 The following will not compile because functions must have different names:
-```ilex
+```neo
 fn pow(x: int, y: int): int {}
 fn pow(x: float, y: float): float {}
 fn pow(x: double, y: double): double {}

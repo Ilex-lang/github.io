@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-  "name": "Ilex",
+  "name": "Neo",
   "patterns": [
     {
       "include": "#comments"
@@ -55,137 +55,137 @@
     "keywords": {
       "patterns": [
         {
-          "name": "keyword.control.ilex",
+          "name": "keyword.control.neo",
           "match": "\\b(if|else|elif|while|until|for|return|yields|when|fallthrough|break|continue|in|defer|defer_err|restrict|goto|try|push_context)\\b"
         },
         {
-          "name": "keyword.reserved.ilex",
+          "name": "keyword.reserved.neo",
           "match": "\\b(impl|constimpl|endimpl|md|does|behavior)\\b"
         },
         {
-          "name": "keyword.intrinsics.ilex",
+          "name": "keyword.intrinsics.neo",
           "match": "\\b(cast|recast|auto_cast|type_of|typeid_of|typeinfo_of|typename_of|size_of|name_of|align_of|type_info|inner_type|fields_of|field_count|has_field|field_type|enum_values|enum_names|enum_count|is_pointer|is_array|is_slice|is_dynamic_array|is_struct|is_enum|is_union|is_optional|is_result|is_function|is_numeric|is_integer|is_float|is_signed|is_unsigned|is_soa|is_const|soa_fields|soa_stride|aos_to_soa|soa_to_aos)\\b"
         },
         {
-          "name": "keyword.operator.memory.ilex",
+          "name": "keyword.operator.memory.neo",
           "match": "\\b(new|delete|make|make_safe|free|new_safe|new_undefined|new_array|append|prepend|len|cap|includes)\\b"
         },
         {
-          "name": "constant.language.null.ilex",
+          "name": "constant.language.null.neo",
           "match": "\\b(null|undefined|unused|unreachable)\\b"
         },
         {
-          "name": "constant.language.boolean.ilex",
+          "name": "constant.language.boolean.neo",
           "match": "\\b(true|false)\\b"
         },
         {
           "comment": "Null coalescing assignment",
           "match": "\\?\\?=",
-          "name": "keyword.operator.assignment.null-coalescing.ilex"
+          "name": "keyword.operator.assignment.null-coalescing.neo"
         },
         {
           "comment": "Null coalescing",
           "match": "\\?\\?",
-          "name": "keyword.operator.null-coalescing.ilex"
+          "name": "keyword.operator.null-coalescing.neo"
         },
         {
           "comment": "Optional unwrap",
           "match": "\\.\\?",
-          "name": "keyword.operator.optional-unwrap.ilex"
+          "name": "keyword.operator.optional-unwrap.neo"
         },
         {
           "comment": "Payload capturing / fat arrow",
           "match": "=>",
-          "name": "keyword.operator.arrow.fat.ilex"
+          "name": "keyword.operator.arrow.fat.neo"
         },
         {
           "comment": "Pointer field access",
           "match": "->",
-          "name": "keyword.operator.arrow.ilex"
+          "name": "keyword.operator.arrow.neo"
         },
         {
           "comment": "Inclusive range",
           "match": "\\.\\.=",
-          "name": "keyword.operator.range.inclusive.ilex"
+          "name": "keyword.operator.range.inclusive.neo"
         },
         {
           "comment": "Half-open range",
           "match": "\\.\\.<",
-          "name": "keyword.operator.range.half-open.ilex"
+          "name": "keyword.operator.range.half-open.neo"
         },
         {
           "comment": "Spread operator",
           "match": "\\.\\.\\.",
-          "name": "keyword.operator.spread.ilex"
+          "name": "keyword.operator.spread.neo"
         },
         {
           "comment": "Plain range",
           "match": "\\.\\.",
-          "name": "keyword.operator.range.ilex"
+          "name": "keyword.operator.range.neo"
         },
         {
           "comment": "Wrapping arithmetic operators",
           "match": "(%\\+\\+|%--|%\\+=|%-=|%\\*=|%/=|%\\+|%-|%\\*|%/)",
-          "name": "keyword.operator.arithmetic.wrapping.ilex"
+          "name": "keyword.operator.arithmetic.wrapping.neo"
         },
         {
           "match": "(<<|>>|~)",
-          "name": "keyword.operator.bitwise.shift.ilex"
+          "name": "keyword.operator.bitwise.shift.neo"
         },
         {
           "match": "((&|\\||\\^|~|<<|>>)=)",
-          "name": "keyword.operator.assignment.bitwise.ilex"
+          "name": "keyword.operator.assignment.bitwise.neo"
         },
         {
           "match": "(==|!=|<=|>=|<|>)",
-          "name": "keyword.operator.comparison.ilex"
+          "name": "keyword.operator.comparison.neo"
         },
         {
           "match": "(@?[+\\*/%\\-]=)",
-          "name": "keyword.operator.assignment.arithmetic.ilex"
+          "name": "keyword.operator.assignment.arithmetic.neo"
         },
         {
           "match": "(:=|::=|=)",
-          "name": "keyword.operator.assignment.ilex"
+          "name": "keyword.operator.assignment.neo"
         },
         {
           "match": "(@?(\\-\\-|\\+\\+))",
-          "name": "keyword.operator.increment-decrement.ilex"
+          "name": "keyword.operator.increment-decrement.neo"
         },
         {
           "match": "(@?(\\-|\\+|\\*|\\/|%))",
-          "name": "keyword.operator.arithmetic.ilex"
+          "name": "keyword.operator.arithmetic.neo"
         },
         {
           "match": "(!|&&|\\|\\|)",
-          "name": "keyword.operator.logical.ilex"
+          "name": "keyword.operator.logical.neo"
         },
         {
           "match": "(\\||&)",
-          "name": "keyword.operator.bitwise.ilex"
+          "name": "keyword.operator.bitwise.neo"
         },
         {
           "match": "\\b(as|extern)\\b",
-          "name": "keyword.other.use.ilex"
+          "name": "keyword.other.use.neo"
         },
         {
-          "name": "keyword.structure.ilex",
+          "name": "keyword.structure.neo",
           "match": "\\b(struct|enum|error|union)\\b"
         },
         {
           "match": "\\b(bool|b8|b16|b32|b64|char|string|cstring|int|uint|uintptr|intptr|float|double|s8|s16|s32|s64|s128|u8|u16|u32|u64|u128|f16|f32|f64|f128|byte|void|typeid|unknown|rawptr|error)\\b",
-          "name": "storage.type.primitive.ilex"
+          "name": "storage.type.primitive.neo"
         },
         {
           "name": "keyword.other.included",
           "match": "\\b(assert|assert_db|panic)\\b"
         },
         {
-          "name": "entity.name.type.Self.ilex",
+          "name": "entity.name.type.Self.neo",
           "match": "\\b(Self)\\b"
         },
         {
-          "name": "keyword.other.ilex",
+          "name": "keyword.other.neo",
           "match": "\\b(distinct)\\b"
         }
       ]
@@ -196,10 +196,10 @@
           "match": "\\b(mut|const)\\s+(\\^?[A-Za-z_][A-Za-z0-9_]*)\\b",
           "captures": {
             "1": {
-              "name": "keyword.default.ilex"
+              "name": "keyword.default.neo"
             },
             "2": {
-              "name": "support.variable.ilex"
+              "name": "support.variable.neo"
             }
           }
         },
@@ -207,13 +207,13 @@
           "match": "\\b(fn)\\s+(([A-Za-z_][A-Za-z0-9_]*(::))?[A-Za-z_][A-Za-z0-9_]*)\\s*[\\(<\\[]",
           "captures": {
             "1": {
-              "name": "keyword.default.ilex"
+              "name": "keyword.default.neo"
             },
             "2": {
-              "name": "entity.name.function.ilex"
+              "name": "entity.name.function.neo"
             },
             "3": {
-              "name": "entity.name.type.type.ilex"
+              "name": "entity.name.type.type.neo"
             },
             "4": {
               "name": "punctuation.coloncolon"
@@ -225,13 +225,13 @@
           "match": "\\b(fn)\\s+([A-Za-z_][A-Za-z0-9_]*)\\s+(overloads)\\s*\\{",
           "captures": {
             "1": {
-              "name": "keyword.default.ilex"
+              "name": "keyword.default.neo"
             },
             "2": {
-              "name": "entity.name.function.ilex"
+              "name": "entity.name.function.neo"
             },
             "3": {
-              "name": "keyword.default.ilex"
+              "name": "keyword.default.neo"
             }
           }
         },
@@ -240,13 +240,13 @@
           "match": "\\b(operator)\\s+(==|!=|\\+|-|\\*|/|\\+=|-=|\\*=|/=|\\[\\]|\\[\\]=|<|>|<=|>=|!|~)\\s+(overloads)\\s*\\{",
           "captures": {
             "1": {
-              "name": "keyword.default.ilex"
+              "name": "keyword.default.neo"
             },
             "2": {
-              "name": "entity.name.function.operator.ilex"
+              "name": "entity.name.function.operator.neo"
             },
             "3": {
-              "name": "keyword.default.ilex"
+              "name": "keyword.default.neo"
             }
           }
         },
@@ -255,16 +255,16 @@
           "match": "\\b(typedef)\\s+([A-Za-z_][A-Za-z0-9_]*)(?:\\s+(as)\\s+([A-Za-z_][A-Za-z0-9_|\\s]*))?\\b",
           "captures": {
             "1": {
-              "name": "keyword.default.ilex"
+              "name": "keyword.default.neo"
             },
             "2": {
-              "name": "entity.name.type.type.ilex"
+              "name": "entity.name.type.type.neo"
             },
             "3": {
-              "name": "storage.modifier.ilex"
+              "name": "storage.modifier.neo"
             },
             "4": {
-              "name": "entity.name.type.type.ilex"
+              "name": "entity.name.type.type.neo"
             }
           }
         },
@@ -272,10 +272,10 @@
           "match": "\\b(namespace)\\s+([A-Za-z_][A-Za-z0-9_]*)(?:\\s*(as)\\s*([A-Za-z_][A-Za-z0-9_]*))?\\b",
           "captures": {
             "1": {
-              "name": "keyword.default.ilex"
+              "name": "keyword.default.neo"
             },
             "2": {
-              "name": "entity.name.type.module.ilex"
+              "name": "entity.name.type.module.neo"
             }
           }
         },
@@ -283,10 +283,10 @@
           "match": "\\b(use|using)\\s+(('|\")?[A-Za-z_][A-Za-z0-9_:.]*('|\")?)(?:\\s*(as)\\s*([A-Za-z_][A-Za-z0-9_]*))?",
           "captures": {
             "1": {
-              "name": "keyword.default.ilex"
+              "name": "keyword.default.neo"
             },
             "2": {
-              "name": "entity.name.type.module.ilex"
+              "name": "entity.name.type.module.neo"
             }
           }
         },
@@ -295,10 +295,10 @@
           "match": "\\b(test)\\s+(\"[^\"]*\"|skip)\\b",
           "captures": {
             "1": {
-              "name": "keyword.default.ilex"
+              "name": "keyword.default.neo"
             },
             "2": {
-              "name": "string.quoted.double.ilex"
+              "name": "string.quoted.double.neo"
             }
           }
         },
@@ -307,10 +307,10 @@
           "match": "\\b(skip)\\s+(test)\\b",
           "captures": {
             "1": {
-              "name": "keyword.default.ilex"
+              "name": "keyword.default.neo"
             },
             "2": {
-              "name": "keyword.default.ilex"
+              "name": "keyword.default.neo"
             }
           }
         },
@@ -319,7 +319,7 @@
           "match": "\\b(test)\\s*\\{",
           "captures": {
             "1": {
-              "name": "keyword.default.ilex"
+              "name": "keyword.default.neo"
             }
           }
         }
@@ -332,19 +332,19 @@
           "match": "(#import)\\s+(extern)\\s+(\"[^\"]*\")\\s+(as)\\s+([A-Za-z_][A-Za-z0-9_]*)",
           "captures": {
             "1": {
-              "name": "keyword.control.ilex"
+              "name": "keyword.control.neo"
             },
             "2": {
-              "name": "storage.modifier.ilex"
+              "name": "storage.modifier.neo"
             },
             "3": {
-              "name": "string.quoted.double.ilex"
+              "name": "string.quoted.double.neo"
             },
             "4": {
-              "name": "keyword.control.ilex"
+              "name": "keyword.control.neo"
             },
             "5": {
-              "name": "entity.name.type.module.ilex"
+              "name": "entity.name.type.module.neo"
             }
           }
         },
@@ -353,16 +353,16 @@
           "match": "(#import)\\s+(\\{[^}]*\\})\\s+(from)\\s+([A-Za-z_][A-Za-z0-9_:]*)",
           "captures": {
             "1": {
-              "name": "keyword.control.ilex"
+              "name": "keyword.control.neo"
             },
             "2": {
-              "name": "meta.import.list.ilex"
+              "name": "meta.import.list.neo"
             },
             "3": {
-              "name": "keyword.control.ilex"
+              "name": "keyword.control.neo"
             },
             "4": {
-              "name": "entity.name.type.module.ilex"
+              "name": "entity.name.type.module.neo"
             }
           }
         },
@@ -371,13 +371,13 @@
           "match": "(#import)\\s+(using)\\s+(\"[^\"]*\"|[A-Za-z_][A-Za-z0-9_:]*)",
           "captures": {
             "1": {
-              "name": "keyword.control.ilex"
+              "name": "keyword.control.neo"
             },
             "2": {
-              "name": "keyword.control.ilex"
+              "name": "keyword.control.neo"
             },
             "3": {
-              "name": "entity.name.type.module.ilex"
+              "name": "entity.name.type.module.neo"
             }
           }
         },
@@ -386,16 +386,16 @@
           "match": "(#import)\\s+(\"[^\"]*\"|[A-Za-z_][A-Za-z0-9_:]*)\\s+(as|using)(?:\\s+([A-Za-z_][A-Za-z0-9_]*))?",
           "captures": {
             "1": {
-              "name": "keyword.control.ilex"
+              "name": "keyword.control.neo"
             },
             "2": {
-              "name": "entity.name.type.module.ilex"
+              "name": "entity.name.type.module.neo"
             },
             "3": {
-              "name": "keyword.control.ilex"
+              "name": "keyword.control.neo"
             },
             "4": {
-              "name": "entity.name.type.module.ilex"
+              "name": "entity.name.type.module.neo"
             }
           }
         },
@@ -404,10 +404,10 @@
           "match": "(#import)\\s+(\"[^\"]*\"|[A-Za-z_][A-Za-z0-9_:]*)",
           "captures": {
             "1": {
-              "name": "keyword.control.ilex"
+              "name": "keyword.control.neo"
             },
             "2": {
-              "name": "entity.name.type.module.ilex"
+              "name": "entity.name.type.module.neo"
             }
           }
         }
@@ -421,19 +421,19 @@
           "end": "\\]",
           "beginCaptures": {
             "0": {
-              "name": "punctuation.definition.attribute.begin.ilex"
+              "name": "punctuation.definition.attribute.begin.neo"
             }
           },
           "endCaptures": {
             "0": {
-              "name": "punctuation.definition.attribute.end.ilex"
+              "name": "punctuation.definition.attribute.end.neo"
             }
           },
-          "name": "meta.attribute.ilex",
+          "name": "meta.attribute.neo",
           "patterns": [
             {
               "match": "\\b[A-Za-z_][A-Za-z0-9_]*\\b",
-              "name": "entity.other.attribute-name.ilex"
+              "name": "entity.other.attribute-name.neo"
             },
             {
               "include": "#strings"
@@ -450,7 +450,7 @@
         {
           "comment": "Compile-time directives (not #import, handled separately)",
           "match": "#(run|insert|code|macro|modify|bake_constants|specialize|define|undef|set|unset|if|elif|else|ifndef|for|error|warn|info|todo|assert|asm|soa|ordered)\\b",
-          "name": "keyword.control.directive.ilex"
+          "name": "keyword.control.directive.neo"
         }
       ]
     },
@@ -458,8 +458,8 @@
       "patterns": [
         {
           "comment": "Built-in compile-time values",
-          "match": "#(file|path|line|column|function|namespace|location|caller_location|target_os|target_arch|target_endian|target_pointer_width|target_triple|build_mode|opt_level|ilex_version|ilex_version_major|ilex_version_minor|ilex_version_patch|build_time|build_date|build_timestamp|counter|iota)\\b",
-          "name": "constant.language.builtin.ilex"
+          "match": "#(file|path|line|column|function|namespace|location|caller_location|target_os|target_arch|target_endian|target_pointer_width|target_triple|build_mode|opt_level|neo_version|neo_version_major|neo_version_minor|neo_version_patch|build_time|build_date|build_timestamp|counter|iota)\\b",
+          "name": "constant.language.builtin.neo"
         }
       ]
     },
@@ -468,7 +468,7 @@
         {
           "comment": "Generic type constraints",
           "match": "#(number|integer|decimal|signed|signed_integer|unsigned|unsigned_integer|boolean)\\b",
-          "name": "storage.type.constraint.ilex"
+          "name": "storage.type.constraint.neo"
         }
       ]
     },
@@ -477,7 +477,7 @@
         {
           "comment": "Platform detection flags",
           "match": "#(OS_WINDOWS|OS_LINUX|OS_MACOS|OS_IOS|OS_ANDROID|OS_FREEBSD|OS_OPENBSD|OS_NETBSD|OS_WASM|ARCH_X86|ARCH_X86_64|ARCH_ARM|ARCH_ARM64|ARCH_WASM32|ARCH_WASM64|ARCH_RISCV32|ARCH_RISCV64)\\b",
-          "name": "constant.language.platform.ilex"
+          "name": "constant.language.platform.neo"
         }
       ]
     },
@@ -486,7 +486,7 @@
         {
           "comment": "Utility compile-time macros",
           "match": "#(embed_bytes|embed_string|concat|stringify|c_varargs|env)\\b",
-          "name": "support.function.macro.builtin.ilex"
+          "name": "support.function.macro.builtin.neo"
         }
       ]
     },
@@ -495,7 +495,7 @@
         {
           "comment": "Fallback: any #identifier not matched above",
           "match": "#([A-Za-z_][A-Za-z0-9_]*)",
-          "name": "support.function.macro.ilex"
+          "name": "support.function.macro.neo"
         }
       ]
     },
@@ -504,7 +504,7 @@
         {
           "comment": "$T generic type parameters",
           "match": "\\$([A-Za-z_][A-Za-z0-9_]*)",
-          "name": "entity.name.type.generic.ilex"
+          "name": "entity.name.type.generic.neo"
         }
       ]
     },
@@ -514,7 +514,7 @@
           "match": "([A-Za-z_][A-Za-z0-9_]*)\\(",
           "captures": {
             "1": {
-              "name": "support.function.ilex"
+              "name": "support.function.neo"
             }
           }
         }
@@ -523,29 +523,29 @@
     "strings": {
       "patterns": [
         {
-          "name": "string.quoted.double.ilex",
+          "name": "string.quoted.double.neo",
           "begin": "\"",
           "end": "\"",
           "patterns": [
             {
-              "name": "constant.character.escape.ilex",
+              "name": "constant.character.escape.neo",
               "match": "(?x)\\\\ (\n\\\\\t\t\t |\n[abefnprtv'\"?]   |\n[0-3]\\d{,2}\t |\n[4-7]\\d?\t\t|\nx[a-fA-F0-9]{,2} |\nu[a-fA-F0-9]{,4} |\nU[a-fA-F0-9]{,8} )"
             }
           ]
         },
         {
-          "name": "string.quoted.single.ilex",
+          "name": "string.quoted.single.neo",
           "begin": "'",
           "end": "'",
           "patterns": [
             {
-              "name": "constant.character.escape.ilex",
+              "name": "constant.character.escape.neo",
               "match": "(?x)\\\\ (\n\\\\\t\t\t |\n[abefnprtv'\"?]   |\n[0-3]\\d{,2}\t |\n[4-7]\\d?\t\t|\nx[a-fA-F0-9]{,2} |\nu[a-fA-F0-9]{,4} |\nU[a-fA-F0-9]{,8} )"
             }
           ]
         },
         {
-          "name": "string.quoted.raw.ilex",
+          "name": "string.quoted.raw.neo",
           "begin": "`",
           "end": "`"
         }
@@ -555,32 +555,32 @@
       "patterns": [
         {
           "comment": "Hexadecimal literal",
-          "name": "constant.numeric.hex.ilex",
+          "name": "constant.numeric.hex.neo",
           "match": "\\b0[xX][0-9a-fA-F_]+\\b"
         },
         {
           "comment": "Octal literal",
-          "name": "constant.numeric.octal.ilex",
+          "name": "constant.numeric.octal.neo",
           "match": "\\b0[qQ][0-7_]+\\b"
         },
         {
           "comment": "Binary literal",
-          "name": "constant.numeric.binary.ilex",
+          "name": "constant.numeric.binary.neo",
           "match": "\\b0[bB][01_]+\\b"
         },
         {
           "comment": "Float literal with decimal point",
-          "name": "constant.numeric.float.ilex",
+          "name": "constant.numeric.float.neo",
           "match": "\\b[0-9][0-9_]*\\.[0-9_]*[fFdD]?\\b"
         },
         {
           "comment": "Float literal with suffix only (e.g. 12f)",
-          "name": "constant.numeric.float.ilex",
+          "name": "constant.numeric.float.neo",
           "match": "\\b[0-9][0-9_]*[fFdD]\\b"
         },
         {
           "comment": "Integer literal",
-          "name": "constant.numeric.integer.ilex",
+          "name": "constant.numeric.integer.neo",
           "match": "\\b[0-9][0-9_]*\\b"
         }
       ]
@@ -588,7 +588,7 @@
     "ident": {
       "patterns": [
         {
-          "name": "variable.other.readwrite.ilex",
+          "name": "variable.other.readwrite.neo",
           "match": "\\b[A-Za-z_][A-Za-z0-9_]*\\b"
         }
       ]
@@ -599,16 +599,16 @@
           "begin": "/\\*\\*(?!/)",
           "beginCaptures": {
             "0": {
-              "name": "punctuation.definition.comment.begin.ilex"
+              "name": "punctuation.definition.comment.begin.neo"
             }
           },
           "end": "\\*/",
           "endCaptures": {
             "0": {
-              "name": "punctuation.definition.comment.end.ilex"
+              "name": "punctuation.definition.comment.end.neo"
             }
           },
-          "name": "comment.block.documentation.ilex",
+          "name": "comment.block.documentation.neo",
           "patterns": [
             {
               "include": "#nested"
@@ -619,16 +619,16 @@
           "begin": "/\\*:",
           "beginCaptures": {
             "0": {
-              "name": "punctuation.definition.comment.begin.ilex"
+              "name": "punctuation.definition.comment.begin.neo"
             }
           },
           "end": "\\*/",
           "endCaptures": {
             "0": {
-              "name": "punctuation.definition.comment.end.ilex"
+              "name": "punctuation.definition.comment.end.neo"
             }
           },
-          "name": "comment.block.documentation.playground.ilex",
+          "name": "comment.block.documentation.playground.neo",
           "patterns": [
             {
               "include": "#nested"
@@ -639,16 +639,16 @@
           "begin": "/\\*|/-",
           "beginCaptures": {
             "0": {
-              "name": "punctuation.definition.comment.begin.ilex"
+              "name": "punctuation.definition.comment.begin.neo"
             }
           },
           "end": "\\*/|-/",
           "endCaptures": {
             "0": {
-              "name": "punctuation.definition.comment.end.ilex"
+              "name": "punctuation.definition.comment.end.neo"
             }
           },
-          "name": "comment.block.ilex",
+          "name": "comment.block.neo",
           "patterns": [
             {
               "include": "#nested"
@@ -657,13 +657,13 @@
         },
         {
           "match": "\\*/|-/",
-          "name": "invalid.illegal.unexpected-end-of-block-comment.ilex"
+          "name": "invalid.illegal.unexpected-end-of-block-comment.neo"
         },
         {
           "begin": "(^[ \\t]+)?(?=//)",
           "beginCaptures": {
             "1": {
-              "name": "punctuation.whitespace.comment.leading.ilex"
+              "name": "punctuation.whitespace.comment.leading.neo"
             }
           },
           "end": "(?!\\G)",
@@ -672,31 +672,31 @@
               "begin": "///",
               "beginCaptures": {
                 "0": {
-                  "name": "punctuation.definition.comment.ilex"
+                  "name": "punctuation.definition.comment.neo"
                 }
               },
               "end": "^",
-              "name": "comment.line.triple-slash.documentation.ilex"
+              "name": "comment.line.triple-slash.documentation.neo"
             },
             {
               "begin": "//:",
               "beginCaptures": {
                 "0": {
-                  "name": "punctuation.definition.comment.ilex"
+                  "name": "punctuation.definition.comment.neo"
                 }
               },
               "end": "^",
-              "name": "comment.line.double-slash.documentation.ilex"
+              "name": "comment.line.double-slash.documentation.neo"
             },
             {
               "begin": "//",
               "beginCaptures": {
                 "0": {
-                  "name": "punctuation.definition.comment.ilex"
+                  "name": "punctuation.definition.comment.neo"
                 }
               },
               "end": "^",
-              "name": "comment.line.double-slash.ilex"
+              "name": "comment.line.double-slash.neo"
             }
           ]
         }
@@ -714,5 +714,5 @@
       }
     }
   },
-  "scopeName": "source.ilex"
+  "scopeName": "source.neo"
 }

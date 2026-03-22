@@ -1,15 +1,15 @@
 ---
 title: Hello World
-description: Write your first Ilex program.
+description: Write your first Neo program.
 ---
 
-Let's write a simple "Hello, World!" program in Ilex.
+Let's write a simple "Hello, World!" program in Neo.
 
 ## Your First Program
 
-Create a file called `hello.ix`:
+Create a file called `hello.neo`:
 
-```ilex
+```neo
 namespace main;
 
 #import fmt;
@@ -22,8 +22,8 @@ fn main() {
 ## Compile and Run
 
 ```bash
-ilex hello.ix
-./ilex-out/hello
+neo hello.neo
+./neo-out/hello
 ```
 
 You should see:

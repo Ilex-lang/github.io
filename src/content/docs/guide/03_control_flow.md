@@ -9,7 +9,7 @@ sidebar:
 
 If statements work much like they do in other languages:
 
-```ilex
+```neo
 if x % 2 == 0 {
     fmt::println("x is even!");
 }
@@ -17,19 +17,19 @@ if x % 2 == 0 {
 
 Note that if statements do not require `(` `)`, but they can be used.
 
-```ilex
+```neo
 if (x % 2 != 0) {
     fmt::println("x is odd!");
 }
 ```
 
 If statements require curly braces unless it is a single line if statement. Single line if statements must have a `:` after the condition:
-```ilex
+```neo
 if x == y: continue;
 ```
 
 If statements can have multiple branches:
-```ilex
+```neo
 if x > y {
     fmt::println("x > y");
 } else if x < y {
@@ -41,7 +41,7 @@ if x > y {
 
 The `elif` keyword can also be used:
 
-```ilex
+```neo
 if str == "foo" {
     fmt::println("foo!");
 } elif str == "bar" {
@@ -54,21 +54,21 @@ if str == "foo" {
 ## for
 
 For loops work much like other languages:
-```ilex
+```neo
 for i := 0; i < 10; i++ {
     fmt::println(i);
 }
 ```
 
 Parentesis are optional with for loops:
-```ilex
+```neo
 for (i := 0; i < 10; i++) {
     fmt::println(i);
 }
 ```
 
 Range based for loops can also be used:
-```ilex
+```neo
 // Exclusive
 for const i in 0 ..< 10 {
     fmt::println(i);
@@ -81,21 +81,21 @@ for const i in 0 ..= 10 {
 ```
 
 An index is not needed:
-```ilex
+```neo
 for 0 ..< 10 {
     fmt::println("foo");
 }
 ```
 
 The step can be set:
-```ilex
+```neo
 for 0 ..< 10; 2 {
     fmt::println("step of 2");
 }
 ```
 
 For loops can be used on arrays, strings, and maps:
-```ilex
+```neo
 for const c in str {}
 for const c, i in str {}
 for const str in strings {}
@@ -109,31 +109,31 @@ for const key, mut value in map {}
 ```
 
 For loops can be single line with no braces too:
-```ilex
+```neo
 for const i in 0 ..< 10: fmt::println(i);
 ```
 
 Use `<-` after for to iterate in reverse. The range stays the same, `<-` reverses the direction.
-```ilex
+```neo
 for <- const i in 0 ..< 10 {} // 9, 8, 7, ..., 0
 for <- const i in 0 ..= 10 {} // 10, 9, 8, ..., 0
 for <- const i in 0 ..< 10; 2 {} // 8, 6, 4, 2, 0
 ```
 
 Forward iteration over a reversed range does nothing (warning):
-```ilex
+```neo
 for const i in 10 ..< 0 {} // Compiles, but does nothing, generates warning
 ```
 
 To unroll a loop use `#[unroll]`:
-```ilex
+```neo
 #[unroll] for 0 ..< 10 {}
 ```
 
 ## while
 
 While loops work much like they do in other languages:
-```ilex
+```neo
 while condition == true {
     // Do something
 }
@@ -142,7 +142,7 @@ while condition == true {
 ### do while
 
 For a do while loop use `#[at_least_once]`:
-```ilex
+```neo
 #[at_least_once]
 while condition == true {
     // Code ran at least once
@@ -152,14 +152,14 @@ while condition == true {
 ## until
 
 Until loops are the opposite of while loops:
-```ilex
+```neo
 until condition == true {
     // Do something
 }
 ```
 
 Another example:
-```ilex
+```neo
 until window_should_close(&window) {
     // Game loop
 }
@@ -173,7 +173,7 @@ while !window_should_close(&window) {
 ### do until
 
 Until loops can also use `#[at_least_once]`:
-```ilex
+```neo
 #[at_least_once]
 until condition == true {
     // Code ran at least once
@@ -185,7 +185,7 @@ until condition == true {
 ### break
 
 `break` will exit the current iteration of the loop and will not continue:
-```ilex
+```neo
 found := false;
 for const v in some_array {
     if v == target {
@@ -198,7 +198,7 @@ for const v in some_array {
 ### continue
 
 `continue` will exit the current iteration of the loop but continue:
-```ilex
+```neo
 for i := 0; i < 10; ++i {
     if i % 2 == 0 {
         fmt::println("even");
@@ -212,7 +212,7 @@ for i := 0; i < 10; ++i {
 ## when
 When statements are much like switch statements in c/c++ except they only need one dedicated keyword.
 Parentheses are optional for `when` as well:
-```ilex
+```neo
 x ::= 2;
 when x {
     1: fmt::println("one");
@@ -223,7 +223,7 @@ when x {
 ```
 
 Multiple cases can be handled at once:
-```ilex
+```neo
 when x {
     1, 3, 5, 7, 9: fmt::println("odd");
     2, 4, 6, 8, 10: fmt::println("even");
@@ -232,7 +232,7 @@ when x {
 ```
 
 Ranges can also be used:
-```ilex
+```neo
 when x {
     in 0 ..< 10: fmt::println("0 ..< 10");
     in 10 ..= 100: fmt::println("10 ..= 100");
@@ -241,7 +241,7 @@ when x {
 ```
 
 By default cases do not fall through. To fall through use `fallthrough`:
-```ilex
+```neo
 x := 2;
 when x {
     1: fmt::println("one"); fallthrough;
@@ -254,7 +254,7 @@ when x {
 ```
 
 When is not just limited to numbers:
-```ilex
+```neo
 str := "one";
 when str {
     "one": fmt::println("1");
@@ -274,7 +274,7 @@ when str {
 ```
 
 `when` can be used with types as well:
-```ilex
+```neo
 typedef Value as double | string | bool;
 mut v: Value;
 
@@ -286,14 +286,14 @@ when type_of(v) {
 ```
 
 Functions can't be used as a pattern:
-```ilex
+```neo
 when x {
     is_even(x): fmt::println("even!"); // Invalid
 }
 ```
 
 Each branch in a `when` statement has its own scope. Curly braces are required if the branch has more than one statement:
-```ilex
+```neo
 str := "one";
 when str {
     "one": {
@@ -313,7 +313,7 @@ when str {
 ## unreachable
 
 Sometimes the programmer knows that a branch of code will never be executed. The compiler can be told this with the `unreachable` keyword:
-```ilex
+```neo
 fn foo(x: int) {
     m ::= x % 3;
 
@@ -336,7 +336,7 @@ release mode is undefined behavior.
 ## ternary operator
 
 Ternary operators work much like they do in c/c++ except they can't be nested:
-```ilex
+```neo
 value_if_true ::= 12;
 value_if_false ::= 42;
 condition := true;
@@ -354,8 +354,8 @@ assert(x == 42); // true
 
 Labels can be used with `break` and `continue`. For instance if you have and inner and
 outer loop you can use labels to specify which loop to `break`/`continue` from. Otherwise
-ilex will `break`/`continue` from the loop the statement is in which may not be what you want.
-```ilex
+Neo will `break`/`continue` from the loop the statement is in which may not be what you want.
+```neo
 outer:
 for i := 0; i < 100; ++i {
     inner:
@@ -378,7 +378,7 @@ for i := 0; i < 100; ++i {
 ### goto
 
 Labels can also be used with `goto`:
-```ilex
+```neo
 forever:
 fmt::println("This prints forever!");
 goto forever;

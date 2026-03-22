@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-Ilex has various built-in types. Variables are zero-initialized by default (see [Variables & Constants](/guide/01_variables)).
+Neo has various built-in types. Variables are zero-initialized by default (see [Variables & Constants](/guide/01_variables)).
 
 ## Numeric Types
 
@@ -34,22 +34,22 @@ All float types default to `0.0`.
 
 ### Numeric Literals
 
-```ilex
+```neo
 x := 42;    // int
 y := 3.14;  // double (f64)
 z := 3.14f; // float (f32)
 w := 3.14d; // double (f64), explicit
 ```
 
-Ilex supports hex, octal, and binary literals:
-```ilex
+Neo supports hex, octal, and binary literals:
+```neo
 x := 0xFF;      // hex (or 0xff)
 y := 0q72;      // octal (uses q because o is less readable)
 z := 0b1011011; // binary
 ```
 
 Underscores can be used for readability:
-```ilex
+```neo
 x := 1_000_000;
 y := 0xFF_AA_12;
 z := 0xBAD_F00D;
@@ -75,7 +75,7 @@ All boolean types default to `false`.
 `cstring` is meant for interfacing with C libraries. It is not interchangeable with `string`, use `strings::to_cstring()` and `strings::from_cstring()` for conversion.
 
 Raw strings use backticks:
-```ilex
+```neo
 str := `this\is\'a\raw\string`;
 ```
 
@@ -89,14 +89,14 @@ str := `this\is\'a\raw\string`;
 ## Type Aliases
 
 Custom type aliases are created with `typedef`:
-```ilex
+```neo
 typedef Custom as int;
 mut var: Custom = 42;
 assert(typename_of(var) == "Custom");
 ```
 
 Non-distinct aliases are fully interchangeable with their base type:
-```ilex
+```neo
 typedef Custom as int;
 mut a: Custom;
 mut b: int;
@@ -107,7 +107,7 @@ if a == b {} // Valid
 ## Distinct Types
 
 Use `#[distinct]` to create a type that is not implicitly convertible to its base:
-```ilex
+```neo
 #[distinct] typedef Custom as int;
 mut a: Custom;
 mut b: int;
@@ -121,19 +121,19 @@ if int(a) == b {}       // Also valid
 ```
 
 Distinct types can have a custom default value:
-```ilex
+```neo
 #[distinct, init_to=1] typedef Month as int;
 mut month: Month; // month is 1
 ```
 
 ## Casting
 
-Types in Ilex are not implicitly converted (with a few exceptions listed below). There are four casting operators:
+Types in Neo are not implicitly converted (with a few exceptions listed below). There are four casting operators:
 
 ### `cast(value, type)`
 
 The standard cast. Can be preferred because it is searchable and clear:
-```ilex
+```neo
 x: s8 = 100;
 y := cast(x, s32);
 ```
@@ -141,7 +141,7 @@ y := cast(x, s32);
 ### `type(value)`
 
 Functional form. Sometimes easier to read in nested expressions:
-```ilex
+```neo
 return u8(abs(s8(n)));
 
 // Compared to the equivalent with cast:
@@ -151,7 +151,7 @@ return cast(abs(cast(n, s8)), u8);
 ### `recast(value, type)`
 
 Bit reinterpretation between types of the same size (like `reinterpret_cast` in C++):
-```ilex
+```neo
 mut x: f32 = 12.0;
 y := recast(x, u32);
 ```
@@ -159,7 +159,7 @@ y := recast(x, u32);
 ### `auto_cast(value)`
 
 Casts to whatever type the assignment target expects. Convenient but potentially unsafe:
-```ilex
+```neo
 x := 12.f;
 mut y: int;
 y = auto_cast(x); // Equivalent to cast(x, type_of(y))
@@ -167,7 +167,7 @@ y = auto_cast(x); // Equivalent to cast(x, type_of(y))
 
 ### Casting in Practice
 
-```ilex
+```neo
 x := 12;
 y := 42;
 mut z: f64 = x / y;                       // Error, no implicit int to f64
@@ -178,10 +178,10 @@ mut z: f64 = cast(x / y, f64);            // Valid but probably not what you wan
 
 ## Implicit Conversions
 
-Ilex has very few implicit conversions:
+Neo has very few implicit conversions:
 
 1. **Float upcasting**: `f16` -> `f32` -> `f64` -> `f128`
-```ilex
+```neo
 mut x: f16 = 1.0;
 mut y: f32 = x; // Valid
 mut z: f64 = y; // Valid
@@ -189,7 +189,7 @@ mut z: f64 = y; // Valid
 
 2. **Boolean context**: `int`, `uint`, pointers (`^T`), and optionals (`T?`) can be used directly in conditions
 (though I may change my mind on this):
-```ilex
+```neo
 x := 12;
 if x {}   // Compiler inserts: if x != 0
 
@@ -206,7 +206,7 @@ if opt {} // Compiler inserts: if opt != null
 
 `unknown` is a compile-time resolved type for function parameters. The compiler monomorphizes the function for each concrete type used at call sites:
 
-```ilex
+```neo
 fn process(val: unknown) {}
 process(42);
 process("hello");
@@ -216,7 +216,7 @@ process("hello");
 
 For variadic `unknown` parameters, each argument may be a different type. Use `#for` to iterate at compile time:
 
-```ilex
+```neo
 fn println(args: ..unknown) {
     #for const arg in args {
         when type_of(arg) {
@@ -234,7 +234,7 @@ Each call site generates a specialized version with direct calls. No branching, 
 
 SIMD stands for single instruction, multiple data. It is a type of parallel processing where one instruction
 operates on multiple data points at the same time.
-```ilex
+```neo
 simd<N, T>
 typedef Vec4f as simd<4, f32>;
 ```
