@@ -89,8 +89,9 @@ import { Aside, Card, CardGrid, Tabs, TabItem } from '@astrojs/starlight/compone
     #import strings;
 
     const GIT_HASH = #run {
-        result := process::run("git", ["rev-parse", "--short", "HEAD"])
-            else yields "unknown";
+        result := process::run("git", ["rev-parse", "--short", "HEAD"]) else {
+            yields "unknown";
+        }
         yields strings::trim(result.stdout);
     };
 
@@ -125,18 +126,3 @@ import { Aside, Card, CardGrid, Tabs, TabItem } from '@astrojs/starlight/compone
     ```
   </TabItem>
 </Tabs>
-
-<CardGrid>
-	<Card title="Explicit over implicit" icon="pencil">
-		No hidden allocations, no implicit conversions, no garbage collector. You control what your program does.
-	</Card>
-	<Card title="Compile-time power" icon="setting">
-		Execute arbitrary code at compile time with `#run`, generate code with macros, and introspect types — all before your program ships.
-	</Card>
-	<Card title="C interoperability" icon="puzzle">
-		Import C headers directly with `#import extern`. No bindings generators, no wrappers — just use existing C libraries.
-	</Card>
-	<Card title="Modern ergonomics" icon="rocket">
-		Generics, optionals, result types, pattern matching, `defer`, and range-based `for` loops — with the control of a systems language.
-	</Card>
-</CardGrid>

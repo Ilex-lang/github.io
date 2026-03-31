@@ -92,7 +92,7 @@ Custom type aliases are created with `typedef`:
 ```neo
 typedef Custom as int;
 mut var: Custom = 42;
-assert(typename_of(var) == "Custom");
+assert(typeid_of(var) == Custom);
 ```
 
 Non-distinct aliases are fully interchangeable with their base type:

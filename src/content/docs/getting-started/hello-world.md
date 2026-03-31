@@ -10,8 +10,6 @@ Let's write a simple "Hello, World!" program in Neo.
 Create a file called `hello.neo`:
 
 ```neo
-namespace main;
-
 #import fmt;
 
 fn main() {
@@ -22,8 +20,7 @@ fn main() {
 ## Compile and Run
 
 ```bash
-neo hello.neo
-./neo-out/hello
+neo run hello.neo
 ```
 
 You should see:

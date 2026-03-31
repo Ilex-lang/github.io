@@ -45,6 +45,10 @@ export default defineConfig({
           autogenerate: { directory: "guide" },
         },
         {
+          label: "Standard Library",
+          autogenerate: { directory: "standard-library" },
+        },
+        {
           label: "Reference",
           autogenerate: { directory: "reference" },
         },
